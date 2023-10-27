@@ -8,14 +8,17 @@
 		<version>3.1.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>io.bvalentino</groupId>
 	<artifactId>app-deploy</artifactId>
 	<version>1.0.0</version>
 	<name>app-deploy</name>
 	<description>POC - Deploy Spring Boot App on AWS using Github Actions</description>
+
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
