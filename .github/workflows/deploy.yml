@@ -24,20 +24,20 @@ jobs:
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
 
       - name: Build Docker Image
-        run: docker build -t bvalentinozup/app-deploy .
+        run: docker build -t valentinobr/app-deploy .
 
       - name: Push Docker Image
-        run: docker push bvalentinozup/app-deploy
+        run: docker push valentinobr/app-deploy
 
-  deploy:
-    needs: build
-    runs-on: self-hosted
-    steps:
-      - name: Pull Image From Docker Hub
-        run: sudo docker pull bvalentinozup/app-deploy:latest
-
-      - name: Remove Docker Container
-        run: sudo docker rm -f app-deploy
-
-      - name: Run Docker Container
-        run: sudo docker run -d -p 8080:8080 -e DATABASE_USERNAME=${{secrets.DATABASE_USERNAME}} -e DATABASE_PASSWORD='${{secrets.DATABASE_PASSWORD}}' -e DATABASE_URL=${{secrets.DATABASE_URL}} --name app-deploy bvalentinozup/app-deploy
+#  deploy:
+#    needs: build
+#    runs-on: self-hosted
+#    steps:
+#      - name: Pull Image From Docker Hub
+#        run: sudo docker pull valentinobr/app-deploy:latest
+#
+#      - name: Remove Docker Container
+#        run: sudo docker rm -f app-deploy
+#
+#      - name: Run Docker Container
+#        run: sudo docker run -d -p 8080:8080 -e DATABASE_USERNAME=${{secrets.DATABASE_USERNAME}} -e DATABASE_PASSWORD='${{secrets.DATABASE_PASSWORD}}' -e DATABASE_URL=${{secrets.DATABASE_URL}} --name app-deploy valentinobr/app-deploy
